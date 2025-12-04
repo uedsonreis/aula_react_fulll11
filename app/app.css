@@ -12,4 +12,21 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+
+  .login-page{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    footer {
+      margin-top: 20px;
+    }
+  }
+
 }
