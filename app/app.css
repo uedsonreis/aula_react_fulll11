@@ -26,6 +26,10 @@ body {
 
     footer {
       margin-top: 20px;
+
+      button {
+        cursor: pointer;
+      }
     }
   }
 
