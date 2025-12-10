@@ -1,13 +1,20 @@
-import MyInput from "~/components/my-input";
+import MyInput from "~/components/my-input"
+
+import * as authService from '../services/auth.service'
 
 export default function LoginPage() {
 
-    function signIn() {
-        alert('Entrando...')
-    }
+    let username = ''
+    let password = ''
 
-    function handleLogin(event: React.ChangeEvent<HTMLInputElement>) {
-        console.log('Login:', event.target.value);
+    function signIn() {
+        authService.login(username, password).then(isLoggedIn => {
+            if (isLoggedIn) {
+                alert('Login bem-sucedido!')
+            } else {
+                alert('Login/senha inválido(a)!')
+            }
+        })
     }
 
     return (
@@ -16,8 +23,8 @@ export default function LoginPage() {
                 <h1>Página de Login</h1>
             </header>
             <main>
-                <MyInput label="Login" onChange={handleLogin} />
-                <MyInput label="Senha" type='password' />
+                <MyInput label="Login" onChange={event => username = event.target.value} />
+                <MyInput label="Senha" onChange={event => password = event.target.value} type='password' />
             </main>
             <footer>
                 <button onClick={signIn}>Entrar</button>
