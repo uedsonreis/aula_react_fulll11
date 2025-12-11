@@ -1,8 +1,11 @@
 import MyInput from "~/components/my-input"
+import { useNavigate } from 'react-router'
 
 import * as authService from '../services/auth.service'
 
 export default function LoginPage() {
+
+    const navigate = useNavigate()
 
     let username = ''
     let password = ''
@@ -10,7 +13,7 @@ export default function LoginPage() {
     function signIn() {
         authService.login(username, password).then(isLoggedIn => {
             if (isLoggedIn) {
-                alert('Login bem-sucedido!')
+                navigate('users')
             } else {
                 alert('Login/senha inválido(a)!')
             }
@@ -18,7 +21,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="login-page">
+        <div className="container">
             <header>
                 <h1>Página de Login</h1>
             </header>

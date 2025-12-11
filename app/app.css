@@ -13,7 +13,7 @@ body {
     color-scheme: dark;
   }
 
-  .login-page{
+  .container {
     padding: 20px;
     display: flex;
     align-items: center;
