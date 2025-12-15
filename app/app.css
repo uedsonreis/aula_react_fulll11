@@ -25,10 +25,6 @@ body {
     }
 
     main {
-      .link {
-        color: 'cyan';
-        margin-bottom: 60px;
-      }
 
       .my-list-item {
         width: 80vw;
@@ -42,6 +38,10 @@ body {
         }
         .subtitle {
           color: #999;
+        }
+
+        button {
+          cursor: pointer;
         }
       }
     }

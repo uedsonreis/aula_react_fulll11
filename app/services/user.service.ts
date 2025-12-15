@@ -36,3 +36,13 @@ export async function getList() {
         throw new Error(response.status.toString())
     }
 }
+
+export async function remove(id: number) {
+    const response = await fetch(`${URL_API}/${id}`, {
+        method: 'DELETE', headers: getHeaders()
+    })
+
+    if (!response.ok) {
+        throw new Error(response.status.toString())
+    }
+}

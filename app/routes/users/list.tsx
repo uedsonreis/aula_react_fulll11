@@ -11,15 +11,25 @@ export default function UserPage() {
 
     const [users, setUsers] = React.useState<User[]>([])
 
-    React.useEffect(() => {
-
+    function fetchUsers() {
         userService.getList().then(data => {
             setUsers(data)
         }).catch(error => {
             navigate('/')
         })
+    }
 
+    React.useEffect(() => {
+        fetchUsers()
     }, [])
+
+    function removeUser(id: number) {
+        userService.remove(id).then(() => {
+            fetchUsers()
+        }).catch(error => {
+            navigate('/')
+        })
+    }
 
     return (
         <div className="container">
@@ -28,9 +38,15 @@ export default function UserPage() {
             </header>
             
             <main>
-                <Link className="link" to="create">Adicionar Usuário</Link>
+                <Link to="create">Adicionar Usuário</Link>
                 {
-                    users.map(user => <ListItem title={user.name} description={user.username} />)
+                    users.map(user => (
+                        <ListItem
+                            key={user.username}
+                            title={user.name} description={user.username}
+                            remove={() => removeUser(user.id!)}
+                        />
+                    ))
                 }
             </main>
 
