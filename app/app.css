@@ -24,6 +24,28 @@ body {
       margin-bottom: 20px;
     }
 
+    main {
+      .link {
+        color: 'cyan';
+        margin-bottom: 60px;
+      }
+
+      .my-list-item {
+        width: 80vw;
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+
+        .title {
+          font-size: 20px;
+        }
+        .subtitle {
+          color: #999;
+        }
+      }
+    }
+
     footer {
       margin-top: 20px;
 

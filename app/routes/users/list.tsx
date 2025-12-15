@@ -2,6 +2,7 @@ import React from "react"
 import { Link, useNavigate } from "react-router"
 
 import type { User } from "~/models"
+import ListItem from "~/components/list-item"
 import * as userService from '../../services/user.service'
 
 export default function UserPage() {
@@ -13,7 +14,6 @@ export default function UserPage() {
     React.useEffect(() => {
 
         userService.getList().then(data => {
-            console.log('Data Response: ', data)
             setUsers(data)
         }).catch(error => {
             navigate('/')
@@ -28,14 +28,9 @@ export default function UserPage() {
             </header>
             
             <main>
-                <Link to="create">Adicionar Usuário</Link>
-                
+                <Link className="link" to="create">Adicionar Usuário</Link>
                 {
-                    users.map(user => (
-                        <div>
-                            {user.id} - {user.name} ({user.username})
-                        </div>
-                    ))
+                    users.map(user => <ListItem title={user.name} description={user.username} />)
                 }
             </main>
 
