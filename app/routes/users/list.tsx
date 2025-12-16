@@ -23,6 +23,10 @@ export default function UserPage() {
         fetchUsers()
     }, [])
 
+    function goToUpdatePage(id: number) {
+        navigate(`/users/${id}`)
+    }
+
     function removeUser(id: number) {
         userService.remove(id).then(() => {
             fetchUsers()
@@ -44,6 +48,7 @@ export default function UserPage() {
                         <ListItem
                             key={user.username}
                             title={user.name} description={user.username}
+                            update={() => goToUpdatePage(user.id!)}
                             remove={() => removeUser(user.id!)}
                         />
                     ))
